@@ -40,5 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local database
-/data/
+# local database (data/claims.db is committed for Vercel deployment)

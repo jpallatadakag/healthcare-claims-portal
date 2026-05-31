@@ -2,15 +2,29 @@ import Database from "better-sqlite3";
 import path from "path";
 import fs from "fs";
 
-const DB_DIR = path.join(process.cwd(), "data");
-const DB_PATH = path.join(DB_DIR, "claims.db");
+const IS_VERCEL = !!process.env.VERCEL;
+
+function getDbPath(): string {
+  if (IS_VERCEL) {
+    // Vercel filesystem is read-only except /tmp — copy once per cold start
+    const tmp = "/tmp/claims.db";
+    if (!fs.existsSync(tmp)) {
+      const src = path.join(process.cwd(), "data", "claims.db");
+      fs.copyFileSync(src, tmp);
+    }
+    return tmp;
+  }
+  const dir = path.join(process.cwd(), "data");
+  fs.mkdirSync(dir, { recursive: true });
+  return path.join(dir, "claims.db");
+}
 
 let _db: Database.Database | null = null;
 
 export function getDb(): Database.Database {
   if (_db) return _db;
-  fs.mkdirSync(DB_DIR, { recursive: true });
-  _db = new Database(DB_PATH);
+  const dbPath = getDbPath();
+  _db = new Database(dbPath);
   _db.pragma("journal_mode = WAL");
   _db.pragma("foreign_keys = ON");
   runMigrations(_db);
