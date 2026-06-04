@@ -16,7 +16,7 @@ export default function DashboardPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-2xl font-bold text-slate-800">Dashboard</h1>
-        <p className="text-slate-500 text-sm mt-1">Self-Funded Healthcare Claims Analytics</p>
+        <p className="text-slate-500 text-sm mt-1">Healthcare Claims Analytics</p>
       </div>
 
       {/* KPI cards */}

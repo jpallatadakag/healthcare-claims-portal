@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Self-Funded Healthcare Claims Analytics Portal",
-  description: "Analytics and management portal for self-funded healthcare claims",
+  title: "Healthcare Claims Analytics Portal",
+  description: "Analytics and management portal for healthcare claims",
 };
 
 export default function RootLayout({

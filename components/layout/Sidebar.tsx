@@ -16,7 +16,7 @@ export default function Sidebar({ onClose }: { onClose?: () => void }) {
     <aside className="flex flex-col h-full bg-slate-900 text-white w-64 shrink-0">
       <div className="px-6 py-5 border-b border-slate-700">
         <span className="text-sm font-semibold text-blue-400 uppercase tracking-widest">Claims Portal</span>
-        <p className="text-xs text-slate-400 mt-0.5">Self-Funded Analytics</p>
+        <p className="text-xs text-slate-400 mt-0.5">Claims Analytics</p>
       </div>
       <nav className="flex-1 py-4 overflow-y-auto">
         {NAV.map(({ href, label, icon }) => {

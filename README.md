@@ -1,6 +1,6 @@
-# Self-Funded Healthcare Claims Analytics Portal
+# Healthcare Claims Analytics Portal
 
-A mobile-responsive, full-stack web application for managing and analyzing self-funded healthcare claims. Built with Next.js, TypeScript, Tailwind CSS, and SQLite.
+A mobile-responsive, full-stack web application for managing and analyzing healthcare claims. Built with Next.js, TypeScript, Tailwind CSS, and SQLite.
 
 ---
 
