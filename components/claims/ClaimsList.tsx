@@ -1,6 +1,15 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import {
+  ChevronUpIcon,
+  ChevronDownIcon,
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ArrowsUpDownIcon,
+} from "@heroicons/react/24/outline";
 import StatusBadge from "@/components/ui/StatusBadge";
 
 interface Claim {
@@ -77,8 +86,10 @@ export default function ClaimsList() {
   }
 
   function SortIcon({ col }: { col: string }) {
-    if (sortBy !== col) return <span className="opacity-20">↕</span>;
-    return <span>{sortDir === "asc" ? "↑" : "↓"}</span>;
+    if (sortBy !== col) return <ArrowsUpDownIcon className="inline w-3 h-3 opacity-30 ml-1" />;
+    return sortDir === "asc"
+      ? <ChevronUpIcon className="inline w-3 h-3 ml-1" />
+      : <ChevronDownIcon className="inline w-3 h-3 ml-1" />;
   }
 
   return (
@@ -221,11 +232,11 @@ export default function ClaimsList() {
           <div className="flex gap-1">
             <button disabled={page === 1} onClick={() => setPage(1)}
               className="px-2 py-1 text-xs rounded border border-slate-200 disabled:opacity-30 hover:bg-slate-50">
-              «
+              <ChevronDoubleLeftIcon className="w-3 h-3" />
             </button>
             <button disabled={page === 1} onClick={() => setPage(p => p - 1)}
               className="px-2 py-1 text-xs rounded border border-slate-200 disabled:opacity-30 hover:bg-slate-50">
-              ‹
+              <ChevronLeftIcon className="w-3 h-3" />
             </button>
             {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
               const p = Math.max(1, Math.min(page - 2, totalPages - 4)) + i;
@@ -238,11 +249,11 @@ export default function ClaimsList() {
             })}
             <button disabled={page === totalPages} onClick={() => setPage(p => p + 1)}
               className="px-2 py-1 text-xs rounded border border-slate-200 disabled:opacity-30 hover:bg-slate-50">
-              ›
+              <ChevronRightIcon className="w-3 h-3" />
             </button>
             <button disabled={page === totalPages} onClick={() => setPage(totalPages)}
               className="px-2 py-1 text-xs rounded border border-slate-200 disabled:opacity-30 hover:bg-slate-50">
-              »
+              <ChevronDoubleRightIcon className="w-3 h-3" />
             </button>
           </div>
         </div>

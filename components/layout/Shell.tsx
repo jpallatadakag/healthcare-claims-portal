@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import Sidebar from "./Sidebar";
 
 export default function Shell({ children }: { children: React.ReactNode }) {
@@ -29,7 +30,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             className="p-2 rounded-md text-slate-600 hover:bg-slate-100"
             aria-label="Open menu"
           >
-            ☰
+            <Bars3Icon className="w-5 h-5" />
           </button>
           <span className="font-semibold text-slate-800 text-sm">Claims Portal</span>
         </header>

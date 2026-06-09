@@ -1,13 +1,20 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  Squares2X2Icon,
+  DocumentTextIcon,
+  ChartBarIcon,
+  ShieldExclamationIcon,
+  ChatBubbleLeftRightIcon,
+} from "@heroicons/react/24/outline";
 
 const NAV = [
-  { href: "/dashboard", label: "Dashboard",   icon: "▦" },
-  { href: "/claims",    label: "Claims",       icon: "≡" },
-  { href: "/analytics", label: "Analytics",    icon: "↗" },
-  { href: "/validation",label: "Validation",   icon: "⚠" },
-  { href: "/assistant", label: "AI Assistant", icon: "✦" },
+  { href: "/dashboard",  label: "Dashboard",    Icon: Squares2X2Icon },
+  { href: "/claims",     label: "Claims",        Icon: DocumentTextIcon },
+  { href: "/analytics",  label: "Analytics",     Icon: ChartBarIcon },
+  { href: "/validation", label: "Validation",    Icon: ShieldExclamationIcon },
+  { href: "/assistant",  label: "AI Assistant",  Icon: ChatBubbleLeftRightIcon },
 ];
 
 export default function Sidebar({ onClose }: { onClose?: () => void }) {
@@ -19,7 +26,7 @@ export default function Sidebar({ onClose }: { onClose?: () => void }) {
         <p className="text-xs text-slate-400 mt-0.5">Claims Analytics</p>
       </div>
       <nav className="flex-1 py-4 overflow-y-auto">
-        {NAV.map(({ href, label, icon }) => {
+        {NAV.map(({ href, label, Icon }) => {
           const active = path.startsWith(href);
           return (
             <Link
@@ -32,7 +39,7 @@ export default function Sidebar({ onClose }: { onClose?: () => void }) {
                   : "text-slate-400 hover:text-white hover:bg-slate-800"
                 }`}
             >
-              <span className="text-base">{icon}</span>
+              <Icon className="w-5 h-5 shrink-0" />
               {label}
             </Link>
           );
